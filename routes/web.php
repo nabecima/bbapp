@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.app');
-});
+Route::get('/', 'TopController@index')->name('top');
 
 Auth::routes();
 
