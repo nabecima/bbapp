@@ -37345,6 +37345,8 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./jquery */ "./resources/js/jquery.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -37389,6 +37391,60 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/jquery.js":
+/*!********************************!*\
+  !*** ./resources/js/jquery.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _require = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js"),
+    rest = _require.rest;
+
+$(function () {
+  $("#tweet-form").on("submit", function (e) {
+    e.preventDefault();
+    var $form = $(this);
+    var $textarea = $form.find("textarea");
+    var $button = $form.find("button");
+    $.ajax({
+      headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+      },
+      type: $form.attr("method"),
+      url: $form.attr("action"),
+      data: $form.serialize(),
+      dataType: "json"
+    }).done(function (res) {
+      $tweets = $("#tweets");
+      var html = "<div class=\"col-md-9 d-flex tweet mb-3\" data-id=\"".concat(res.id, "\">\n            <div class=\"icon-wrapper\">\n                <img src=\"storage/images/").concat(res.avatar, "\" alt=\"\" class=\"img-fluid icon\">\n            </div>\n            <div class=\"content\">\n                <p class=\"name font-weight-bold d-flex justify-content-between\"><span>").concat(res.name, "\u3055\u3093</span><span class=\"text-center times\"><i class=\"fas fa-times\"></i></span></p>\n                <p class=\"tweet-body mb-0\">").concat(res.body, "</p>\n            </div>\n        </div>");
+      $tweets.prepend(html);
+      console.log(res.body);
+      $textarea.val("");
+    }).fail(function (error) {
+      console.log(error);
+    });
+  });
+  $(document).on("click", ".times", function () {
+    $tweet = $(this).parents(".tweet");
+    $id = $tweet.attr("data-id");
+    $.ajax({
+      headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+      },
+      type: "POST",
+      url: "tweet/".concat($id),
+      data: {
+        _method: "DELETE"
+      }
+    }).done(function () {
+      $tweet.remove();
+    });
+  });
+});
 
 /***/ }),
 

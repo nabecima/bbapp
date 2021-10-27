@@ -53,6 +53,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'avatar' => ['image']
         ]);
     }
 
@@ -64,10 +65,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if (!is_null(request()->file('avatar'))) {
+            // アップロードされた時のファイル名を取得
+            $fileName = request()->file('avatar')->getClientOriginalName();
+
+            // public/imagesにアップロードされた時の名前で保存
+            request()->file('avatar')->storeAs('public/images', $fileName);
+        } else {
+            $fileName = 'user.png';
+        }
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+
+            // DBにはファイル名だけ保存
+            'avatar' => $fileName
         ]);
     }
 }

@@ -1,0 +1,36 @@
+.home {
+    min-height: calc(100vh - 55px);
+}
+
+.icon-wrapper {
+    width: 50px;
+    margin-right: 15px;
+}
+
+.icon {
+    border-radius: 50%;
+    border: 2px solid rgba(99, 99, 99, 0.5);
+    aspect-ratio: 1;
+}
+
+.form-wrapper {
+    width: 100%;
+}
+
+.form-wrapper textarea {
+    width: 100%;
+    height: 150px;
+    border: none;
+    padding: 5px;
+}
+
+.content {
+    width: 100%;
+    padding: 5px;
+    background-color: #fff;
+}
+
+.times {
+    width: 23px;
+    cursor: pointer;
+}

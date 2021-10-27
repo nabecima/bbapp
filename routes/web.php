@@ -18,3 +18,6 @@ Route::get('/', 'TopController@index')->name('top');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/tweet', 'TweetController@store')->name('tweet.store');
+Route::delete('tweet/{id}', 'TweetController@destroy')->name('tweet.destroy');
