@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class TweetController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function store(Request $request)
     {
         $tweet = new Tweet();
@@ -16,6 +21,7 @@ class TweetController extends Controller
         $tweet->save();
         return response()->json([
             'id' => $tweet->id,
+            'user_id' => $tweet->user->id,
             'body' => $tweet->body,
             'name' => $tweet->user->name,
             'avatar' => $tweet->user->avatar

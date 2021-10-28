@@ -21,7 +21,9 @@ $(function () {
 
                 const html = `<div class="col-md-9 d-flex tweet mb-3" data-id="${res.id}">
             <div class="icon-wrapper">
+              <a href="/user/${res.user_id}">
                 <img src="storage/images/${res.avatar}" alt="" class="img-fluid icon">
+              </a>
             </div>
             <div class="content">
                 <p class="name font-weight-bold d-flex justify-content-between"><span>${res.name}さん</span><span class="text-center times"><i class="fas fa-times"></i></span></p>

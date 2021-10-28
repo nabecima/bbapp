@@ -53,7 +53,8 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'avatar' => ['image']
+            'avatar' => ['image'],
+            'introduction' => ['string', 'max:300']
         ]);
     }
 
@@ -81,7 +82,8 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
 
             // DBにはファイル名だけ保存
-            'avatar' => $fileName
+            'avatar' => $fileName,
+            'introduction' => $data['introduction']
         ]);
     }
 }

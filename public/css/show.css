@@ -1,0 +1,13 @@
+.show > .row:first-of-type img {
+    width: 100px;
+}
+
+.info {
+    padding-top: 1.25rem;
+}
+
+.edit {
+    top: 1.25rem;
+    right: 1.25rem;
+    cursor: pointer;
+}

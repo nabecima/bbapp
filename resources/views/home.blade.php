@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container py-4 position-relative home">
+<div class="container py-4 home">
     <div class="row justify-content-center mb-3">
         <div class="col-md-9 d-flex">
             <div class="icon-wrapper">
-                <img src="{{ asset('storage/images/'.Auth::user()->avatar) }}" alt="" class="img-fluid icon">
+                <a href="{{ route('user.show', Auth::id()) }}">
+                    <img src="{{ asset('storage/images/'.Auth::user()->avatar) }}" alt="" class="img-fluid icon">
+                </a>
             </div>
             <div class="form-wrapper">
                 <form id="tweet-form" action="{{ route('tweet.store') }}" method="POST">
@@ -24,8 +26,10 @@
         @foreach ($tweets as $tweet)
         <div class="col-md-9 d-flex tweet mb-3" data-id="{{ $tweet->id }}">
             <div class="icon-wrapper">
-                <img src="{{ htmlspecialchars(asset('storage/images/'.$tweet->user->avatar)) }}" alt=""
-                    class="img-fluid icon">
+                <a href="{{ route('user.show', $tweet->user->id) }}">
+                    <img src="{{ htmlspecialchars(asset('storage/images/'.$tweet->user->avatar)) }}" alt=""
+                        class="img-fluid icon">
+                </a>
             </div>
             <div class="content">
                 <p class="name font-weight-bold d-flex justify-content-between"><span>{!!

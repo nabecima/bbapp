@@ -21,3 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/tweet', 'TweetController@store')->name('tweet.store');
 Route::delete('tweet/{id}', 'TweetController@destroy')->name('tweet.destroy');
+
+Route::get('/user/{id}', 'UserController@show')->name('user.show');
+Route::patch('/user/{id}', 'UserController@update')->name('user.update');

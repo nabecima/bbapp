@@ -37420,7 +37420,7 @@ $(function () {
       dataType: "json"
     }).done(function (res) {
       $tweets = $("#tweets");
-      var html = "<div class=\"col-md-9 d-flex tweet mb-3\" data-id=\"".concat(res.id, "\">\n            <div class=\"icon-wrapper\">\n                <img src=\"storage/images/").concat(res.avatar, "\" alt=\"\" class=\"img-fluid icon\">\n            </div>\n            <div class=\"content\">\n                <p class=\"name font-weight-bold d-flex justify-content-between\"><span>").concat(res.name, "\u3055\u3093</span><span class=\"text-center times\"><i class=\"fas fa-times\"></i></span></p>\n                <p class=\"tweet-body mb-0\">").concat(res.body, "</p>\n            </div>\n        </div>");
+      var html = "<div class=\"col-md-9 d-flex tweet mb-3\" data-id=\"".concat(res.id, "\">\n            <div class=\"icon-wrapper\">\n              <a href=\"/user/").concat(res.user_id, "\">\n                <img src=\"storage/images/").concat(res.avatar, "\" alt=\"\" class=\"img-fluid icon\">\n              </a>\n            </div>\n            <div class=\"content\">\n                <p class=\"name font-weight-bold d-flex justify-content-between\"><span>").concat(res.name, "\u3055\u3093</span><span class=\"text-center times\"><i class=\"fas fa-times\"></i></span></p>\n                <p class=\"tweet-body mb-0\">").concat(res.body, "</p>\n            </div>\n        </div>");
       $tweets.prepend(html);
       console.log(res.body);
       $textarea.val("");
