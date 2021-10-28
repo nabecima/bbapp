@@ -16,8 +16,8 @@ php artisan ui bootstrap --auth
 ```
 
 # Usage
-MySQL database is required.
-The database name should be bbapp.
+MySqlのデータベースが必要です。
+データベース名はbbappにしてください。
 ```bash
 git clone https://github.com/nabecima/bbapp.git
 cd bbapp
