@@ -33,4 +33,4 @@ php artisan serve
 <img width="553" alt="erd" src="https://user-images.githubusercontent.com/66292801/139231458-8d8e9e0c-b162-4ce3-9057-fdeb4746af4e.png">
 
 # Screen Transition Chart
-![screen_transition_chart](https://user-images.githubusercontent.com/66292801/139241408-3674e5e9-1a43-4dad-85f4-84fd579e69cb.png)
+![screen_transition_chart](https://user-images.githubusercontent.com/66292801/139379842-efe91b71-66ab-423c-8201-453f07f89b7b.png)
